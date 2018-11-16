@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="http://d3js.org/d3.v4.min.js"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    <title>Drug policy and Cannabis in California</title>
+    <!-- <link rel='stylesheet' href='whac.css' /> -->
+    <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
+    <style media="screen">
+
+    </style>
+  </head>
+  <body>
+    <!-- <div id="chart"></div> -->
+    <script type="text/javascript">
+
+
+    var margin = {top:10, left:100, bottom:20, right:40}
+    width = 1000 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+    var y = d3.scaleBand()
+          .range([0, height])
+          .padding(0.1);
+
+    var x = d3.scaleLinear()
+          .range([0, width]);
+
+
+
+    var svg = d3.select("body")
+      .append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+        .attr('transform', 'translate(' + [margin.left, margin.top] + ')');
+
+
+
+    function draw(data) {
+
+
+          x.domain([0, d3.max(data, function(d){ return d.permits;})])
+          y.domain(data.map(function(d) { return d.county;}));
+
+          var yAxis = d3.axisLeft()
+              .scale(y)
+              //no tick marks
+              .tickSize(0);
+
+
+          var bars = svg.selectAll(".bar")
+              .data(data)
+              .enter()
+
+          //append rects
+          bars.append("rect")
+              .attr("class", "bar")
+              .attr("y", function (d) {
+                  return y(d.county);
+              })
+              .attr("height", y.bandwidth())
+              // .attr("x", 0)
+              .attr("width", function (d) {
+                  return x(d.permits);
+              });
+
+              svg.append("g")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x));
+
+              svg.append("g")
+                .call(d3.axisLeft(y));
+
+    }
+
+
+    d3.csv("top_ten_permits.csv", function(data){
+      var data = data;
+      data.forEach(function(d){
+
+        d.permits = +d.permits;
+});
+
+
+
+      console.log(data)
+
+
+
+
+        draw(data);
+
+
+
+
+
+
+
+    });
+    </script>
+
+
+
+  </body>
+</html>

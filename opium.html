@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="http://d3js.org/d3.v4.min.js"></script>
+    <title>Kidnapping Graph</title>
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
+  </head>
+  <style media="screen">
+
+
+
+  </style>
+  <body>
+
+
+    <script type="text/javascript">
+
+    var margin = {top: 20, right: 20, bottom: 30, left: 60},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+    var parseTime = d3.timeParse("%Y");
+
+
+    var x = d3.scaleTime().range([0, width]);
+    var y = d3.scaleLinear().range([height, 0]);
+
+
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+
+    var xAxis = d3.axisBottom()
+      .scale(x)
+      .ticks(18);
+      // .ticks(17);
+
+
+    var yAxis = d3.axisLeft()
+      .scale(y);
+
+
+    var line = d3.line()
+      .curve(d3.curveMonotoneX)
+      .x(function(d){return x(d.year)})
+      .y(function(d){return y(d.hectares)});
+
+
+    d3.csv("poppy_cult.csv", function(error, data) {
+      if (error) throw error;
+
+
+      data.forEach(function(d) {
+          d.year = parseTime(d.year);
+          d.hectares = +d.hectares;
+      });
+
+      data.sort(function(a, b) {
+        return a.year - b.year;
+    });
+
+      console.log(data)
+
+
+      x.domain(d3.extent(data, function(d) { return d.year; }));
+      y.domain([0, d3.max(data, function(d) { return d.hectares; })]);
+
+      // Add the valueline path.
+      svg.append("path")
+          .datum(data)
+          .attr("class", "line")
+          .attr("d", line)
+          .attr("fill", "none")
+          .attr("stroke", "blue")
+          .attr("stroke-width", 2);
+
+
+      svg.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
+
+
+      svg.append("g")
+          .call(yAxis);
+
+    });
+
+
+    </script>
+
+  </body>
+</html>

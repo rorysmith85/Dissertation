@@ -1,0 +1,103 @@
+
+body * {
+  box-sizing: border-box;
+}
+
+html body {
+  padding: 0;
+  background-color: #FFFFF7;
+}
+
+#backdrop {
+  height:900px;
+  width:100%;
+  background-image: url("mjane.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+
+#header {
+  display: flex;
+  border: 1px solid black;
+  justify-content: space-around;
+  background-color: black;
+}
+
+#title {
+  display:flex;
+  justify-content:center;
+  /* border: 1px solid black; */
+  width:30%;
+}
+
+#title h3 a {
+  color:white;
+  font-family: 'Crimson Text', serif;
+  font-size: 16px;
+}
+
+.header {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  color:white;
+  /* border: 1px solid black; */
+  width:70%;
+}
+
+#header a {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  font-family: 'Crimson Text', serif;
+  font-size: 12px;
+}
+
+#intro {
+  /* border: 1px solid white; */
+  height:500px;
+  display:flex;
+  align-items: flex-end;
+}
+
+#block1 {
+  width:50%;
+}
+
+#block2 {
+  width:50%;
+  /* border: 1px solid white; */
+  flex-direction: column;
+  font-family: 'Old Standard TT', serif;
+  font-size: 24px;
+  padding-right: 7em;
+  padding-bottom: 1em;
+}
+
+#entrance {
+  display:flex;
+  align-items:center;
+  flex-direction: column;
+}
+
+p {
+  color:white;
+  font-family: 'Old Standard TT', serif;
+}
+
+#entrance p {
+  font-size: 18px;
+}
+
+#entrance p:nth-child(2) {
+  border:1px solid white;
+  border-radius: 4px;
+}
+
+#entrance a {
+  color:white;
+  font-size:18px;
+  text-decoration: none;
+  padding:1em;
+  font-weight: bold;
+}

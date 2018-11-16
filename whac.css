@@ -1,0 +1,127 @@
+body * {
+  box-sizing: border-box;
+}
+
+html body {
+  padding: 0;
+  background-color: #FFFFF7;
+}
+
+#header {
+  display: flex;
+  border: 1px solid black;
+  justify-content: space-around;
+  background-color: black;
+}
+
+p {
+  font-family: 'Old Standard TT', serif;
+  font-size: 20px;
+}
+
+
+#title {
+  display:flex;
+  justify-content:center;
+  /* border: 1px solid black; */
+  width:30%;
+}
+
+#title h3 a {
+  color:white;
+  font-family: 'Crimson Text', serif;
+  font-size: 16px;
+}
+
+.header {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  color:white;
+  /* border: 1px solid black; */
+  width:70%;
+}
+
+#header a {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  font-family: 'Crimson Text', serif;
+  font-size: 12px;
+}
+
+#name {
+  /* font-size: 30px; */
+  width:80%;
+  display:flex;
+  justify-content: center;
+  /* border:1px solid black; */
+}
+
+#name h2 {
+  font-family: 'Crimson Text', serif;
+  font-size: 24px;
+}
+
+.container {
+  display:flex;
+  justify-content: center;
+}
+
+.bod {
+  display:flex;
+  flex-direction: column;
+  /* border:1px solid black; */
+  width:50%;
+}
+
+.image-container {
+  display:flex;
+  justify-content: center;
+  padding-top: 1em;
+  padding-bottom:1em;
+}
+
+/* .image {
+  display:flex;
+  justify-content: center;
+} */
+
+img {
+  max-width:100%;
+  max-height:100%;
+  object-fit: cover;
+}
+
+
+.sub_head h3 {
+  font-weight: bold;
+  font-family: 'Crimson Text', serif;
+  font-size: 24px;
+}
+
+.chapter {
+  /* border:1px solid black; */
+  border-radius: 4px;
+  padding:2em;
+}
+
+.chapter a {
+color:black;
+font-size:18px;
+text-decoration: none;
+padding:1em;
+font-weight: bold;
+}
+
+.caption {
+  display:flex;
+  justify-content: center;
+  /* padding-left: 10em; */
+  margin-top: -1em;
+  padding-bottom: 1em;
+}
+
+.caption p {
+  font-size: 10px;
+}
